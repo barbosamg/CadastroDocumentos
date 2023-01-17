@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CadastroDocumentos.Models.Documento>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Lista de documentos</h1>
+
+<p>
+    <a class="btn btn-sm btn-outline-primary" asp-action="Criar">Cadastrar</a>
+</p>
+@if(Model.Count() > 0)
+{
+    <table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Editar" asp-route-id="@item.DocumentoID">Editar</a>
+                    <a asp-action="Exibir" asp-route-id="@item.DocumentoID">Ver</a>
+                    <a asp-action="Baixar" asp-route-id="@item.DocumentoID">Baixar</a>
+                    <a asp-action="Excluir" asp-route-id="@item.DocumentoID">Excluir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    </table>
+}
+else
+{
+    <p>Nnehum registro encontrado.</p>
+}

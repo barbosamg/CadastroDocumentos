@@ -1,0 +1,38 @@
+﻿@model CadastroDocumentos.DTO.DocumentoDTO
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Documento</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        
+    </dl>
+    <a class="btn btn-sm btn-outline-info col-sm-1" asp-action="Baixar" asp-route-id="@Model.DocumentoID">Baixar</a>
+</div>
+<div class="mt-3">
+    <a asp-action="Editar" asp-route-id="@Model?.DocumentoID">Editar</a> |
+    <a asp-action="Index">Voltar para lista</a>
+</div>
