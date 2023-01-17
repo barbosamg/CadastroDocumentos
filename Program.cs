@@ -30,4 +30,13 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Documentos}/{action=Index}/{id?}");
 
+// cria a base junto com a tabela
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+
+    var context = services.GetRequiredService<CadastroDocumentosContext>();
+    context.Database.Migrate();
+}
+
 app.Run();
